@@ -1,8 +1,11 @@
 import {Module} from '@nestjs/common';
-import {UserService} from './services/user.service';
 import {MongooseModule} from "@nestjs/mongoose";
-import {User, UserSchema} from "./models/user.model";
+
 import {UserRepository} from "./repositories/user.repository";
+import {User, UserSchema} from "./models/user.model";
+import {UserCommands} from "./controllers/user.commands";
+import {UserQueries} from "./controllers/user.queries";
+import {UserService} from './services/user.service';
 
 @Module({
     imports: [
@@ -10,8 +13,9 @@ import {UserRepository} from "./repositories/user.repository";
             {name: User.name, schema: UserSchema}
         ])
     ],
+    controllers: [UserCommands],
     providers: [UserService, UserRepository],
-    exports: [UserRepository],
+    exports: [UserRepository, UserQueries],
 })
 
 export class UserModule {}

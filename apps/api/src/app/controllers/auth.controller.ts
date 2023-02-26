@@ -1,7 +1,7 @@
 import {Body, Controller, Post, UnauthorizedException} from '@nestjs/common';
+import {RMQService} from "nestjs-rmq";
 
 import {AccountLogin, AccountRegister} from "@microservices-test/contracts";
-import {RMQService} from "nestjs-rmq";
 import {LoginDto} from "../dtos/login.dto";
 import {RegisterDto} from "../dtos/register.dto";
 

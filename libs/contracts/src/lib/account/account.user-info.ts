@@ -1,20 +1,18 @@
-import {IsEmail, IsString} from "class-validator";
+import {IsString} from "class-validator";
+import {IUser} from "@microservices-test/interfaces";
 
 
-export namespace AccountGetInfo {
+export namespace AccountUserInfo {
 
     export const topic = 'account.user-info.query';
 
     export class Request {
-        @IsEmail()
-        email: string;
-
         @IsString()
-        password: string;
+        id: string;
     }
 
     export class Response {
-        token: string;
+        user: Omit<IUser, 'passwordHash'>;
     }
 }
 

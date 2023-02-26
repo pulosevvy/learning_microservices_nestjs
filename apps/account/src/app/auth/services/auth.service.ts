@@ -15,7 +15,7 @@ export class AuthService {
         private readonly jwtService: JwtService
     ) {}
 
-    async register({email, password, displayName}: AccountRegister.Request) {
+    async register({email, password, displayName}: AccountRegister.Request ) {
         const oldUser = await this.userRepository.findUser(email);
         if (oldUser) {
             throw new Error('Такой пользователь уже существует');
